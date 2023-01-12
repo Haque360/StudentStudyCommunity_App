@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 // import * as firebase from 'firebase';
 import { collection, query, where } from "firebase/firestore";
 import { db } from '../../firebase';
+import Comments from './Comments';
 
 const postRef = collection(db, "posts");
 
@@ -31,6 +32,9 @@ const ForumPage = ({ visible, setVisible, postDocId, postTitle, postContent, pos
                     <Text style={styles.textStyle2}>{postDocId}</Text>
 
                 </Card>
+                <Comments
+                 DocID={postDocId}
+                />
             </View>
         </Modal>
     );
