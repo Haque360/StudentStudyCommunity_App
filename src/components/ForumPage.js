@@ -1,14 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
-const ForumPage = () => {
-  return (
-    <View>
-      <Text>ForumPage</Text>
-    </View>
-  )
+class ForumPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      post: {
+        id: this.props.navigation.getParam('postId'),
+        title: '',
+        body: '',
+        author: '',
+        comments: [],
+      },
+    };
+  }
+
+  componentDidMount() {
+  }
+
+  render() {
+    return (
+      <View>
+        <Text>{this.state.post.title}</Text>
+        <Text>{this.state.post.body}</Text>
+        <Text>{this.state.post.author}</Text>
+      </View>
+    );
+  }
 }
 
-export default ForumPage
-
-const styles = StyleSheet.create({})
+export default ForumPage;
