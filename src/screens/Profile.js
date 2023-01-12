@@ -38,7 +38,14 @@ const Profile = (props) => {
                     />
                 </View>
                 <Card>
-                    {/* <Image source={{ uri: user.photoURL }} /> */}
+                     <View style={styles.imgContainer}> 
+                        <Image
+                        source={require('../../assets/prof.jpg')}
+                        style={styles.image}
+                        />
+                        <Button title='Edit'/>
+                    </View>
+                   
                     <Text style={styles.textStyle}>Name:</Text>
                     <Text style={styles.textStyle2}></Text>
 
@@ -78,8 +85,19 @@ const styles = StyleSheet.create({
       marginLeft: 20,
       padding: 30,
       width:'20%',
+    },
+    image:{
+        width: 200,
+        height: 200,
+        borderRadius:200/2,
+        borderWidth:  1,
+        borderColor:"#d4d4d4",
+    },
+    imgContainer:{
+        justifyContent: 'center',
+        alignItems: 'center',
     }
-    
+
   });
 
 export default Profile;
