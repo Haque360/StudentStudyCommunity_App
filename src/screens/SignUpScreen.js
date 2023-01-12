@@ -27,14 +27,15 @@ const SignUpScreen = (props) => {
         .catch((error) => {
           console.log("Firebase Error", error);
         });
-    } else {
+    } 
+    else {
       alert("FIELDS ARE EMPTY!");
     }
   };
 
   return (
     <View style={styles.viewStyle}>
-      <Card containerStyle={{ backgroundColor:'white', }}>
+      <Card containerStyle={{ backgroundColor: 'white', }}>
         <Card.Title>Welcome To The Community</Card.Title>
         <Card.Divider />
         <Input
