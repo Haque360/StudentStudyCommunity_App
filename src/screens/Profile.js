@@ -6,6 +6,7 @@ import * as firebase from "firebase/app";
 import { TextInput } from 'react-native-gesture-handler';
 import { update } from 'firebase/database';
 import { getAuth, updateProfile, updateEmail  } from "firebase/auth";
+import { CardDivider } from '@rneui/base/dist/Card/Card.Divider';
 
 const auth = getAuth();
 
@@ -78,14 +79,6 @@ const Profile = (props) => {
                     />
                 </View>
                 <Card>
-                     <View style={styles.imgContainer}> 
-                        <Image
-                        source={require('../../assets/prof.jpg')}
-                        style={styles.image}
-                        />
-                        <Button title='Edit' onPress={()=>_saveDetails(name,email,bio)}/>
-                    </View>
-                   
                     <Text style={styles.textStyle}>Name:</Text>
                     <TextInput value={name} onChangeText={setName}style={styles.textStyle2}/>
 
@@ -101,6 +94,10 @@ const Profile = (props) => {
                     // onChangeText={(text) => this.setState({text})}
                     value={bio}
                     />
+                    <CardDivider/>
+                    <View> 
+                        <Button title='Edit' onPress={()=>_saveDetails(name,email,bio)}/>
+                    </View>
                 </Card>
             
             </View>

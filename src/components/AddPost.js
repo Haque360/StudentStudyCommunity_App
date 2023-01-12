@@ -3,8 +3,9 @@ import { View, TextInput, Button, Modal,StyleSheet ,Text} from 'react-native';
 import { Input, Card } from "@rneui/themed";
 import { getAuth } from 'firebase/auth';
 // import * as firebase from 'firebase';
-import { doc, setDoc } from "firebase/firestore"; 
+import {collection, doc, setDoc,addDoc } from "firebase/firestore"; 
 import { getDatabase , ref, set} from "firebase/database";
+import { db } from '../../firebase';
 
 const database = getDatabase();
 
@@ -22,19 +23,9 @@ const AddPost = ({ visible, setVisible }) => {
     // firebase.database().ref(`users/${userId}`).on('value', snapshot => {
     //     setUser(snapshot.val());
     // });
-}, [email]);
+   }, [email]);
 
   const auth=getAuth()
-
-  function writeUserData(title,content,postID, userEmail) {
-    const db = getDatabase();
-    set(ref(db, 'posts'), {
-      title: setTitle(''),
-      content: setContent(''),
-      postID:setPostId(''),
-      email: setEmail(''),
-    });
-  }
 
   const generateRandomString = (lenth) => {
   const char = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
@@ -55,8 +46,22 @@ const AddPost = ({ visible, setVisible }) => {
     generateRandomString(10)
     setTitle('');
     setContent('');
+
+    addDoc(collection(db, "posts"), {
+     content:content,
+     postID:postId,
+     title:title,
+     userEmail:email,
+
+    }).then(()=>{
+      alert("Post Created")
+    }).catch((error)=>{
+      alert(error.message);
+    })
+    
+    //alert(postId)
+
     setVisible(false);
-    writeUserData();
   };
 
   return (
@@ -70,7 +75,7 @@ const AddPost = ({ visible, setVisible }) => {
             style={styles.textStyle}
             placeholder="Add Title"
             value={title}
-            onChangeText={setTitle}
+            onChangeText={(title)=>{setTitle(title)}}
             />
             <Card.Divider />
             <Text>Content</Text>
@@ -78,7 +83,7 @@ const AddPost = ({ visible, setVisible }) => {
             style={styles.textStyle}
             placeholder="Add Content"
             value={content}
-            onChangeText={setContent}
+            onChangeText={(content)=>{setContent(content)}}
             multiline={true}
             numberOfLines={4}
             />
