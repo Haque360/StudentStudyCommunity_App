@@ -36,7 +36,7 @@ const ForumList = () => {
   }, [setPosts]);
 
   const handlePress = (item) => {
-    console.log('Pressed', item.postID);
+    //console.log('Pressed', item.postID);
     setModalVisible(true)
     setSelectedPostID(item.postID);
     setSelectedPostTitle(item.title);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Button, StyleSheet, Text } from "react-native";
 import { AuthContext } from "../providers/AuthProvider";
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,21 @@ import AddPost from "../components/AddPost";
 
 const HomeScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  // const [reRender, setReRender] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
+
+  useEffect(() => {
+      if (isUpdated) {
+          setIsUpdated(false);
+      }
+  }, [isUpdated]);
+
+  // const handleOnPress = () => {
+  //   setModalVisible(true);
+  //   setIsUpdated(true);
+  // }
+
+
   return (
     <AuthContext.Consumer>
       {(auth) => (
@@ -31,7 +46,10 @@ const HomeScreen = (props) => {
             <Button
               style={styles.button}
               title="Add Post"
-              onPress={() => setModalVisible(true)}
+              onPress={() => {
+                setModalVisible(true);
+                setIsUpdated(true);
+              }}
             />
             <AddPost
               visible={modalVisible}

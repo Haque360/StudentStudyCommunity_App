@@ -27,7 +27,8 @@ const SignUpScreen = (props) => {
         .catch((error) => {
           console.log("Firebase Error", error);
         });
-    } else {
+    } 
+    else {
       alert("FIELDS ARE EMPTY!");
     }
   };
