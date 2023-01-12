@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { View, Button, StyleSheet, Text } from "react-native";
 import { AuthContext } from "../providers/AuthProvider";
-
-const handlePress = () => {
-  navigation.navigate('Profile');
-};
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = (props) => {
   return (
@@ -22,7 +19,7 @@ const HomeScreen = (props) => {
           <Button 
           style={styles.button} 
           title="Profile"
-          onPress={handlePress}
+          onPress={() =>props.navigation.navigate("Profile")}
           />
         </View>
       )}

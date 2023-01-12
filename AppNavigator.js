@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./src/screens/HomeScreen";
+import Profile from "./src/screens/Profile";
 import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import * as firebase from "firebase/app";
@@ -29,6 +30,7 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator initialRouteName="Home">
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Profile" component={Profile} />
     </HomeStack.Navigator>
   );
 };
