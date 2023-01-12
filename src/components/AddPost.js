@@ -20,7 +20,7 @@ const AddPost = ({ visible, setVisible }) => {
 
   return (
     <Modal animationType="slide" visible={visible}>
-      <View>
+      <View style={styles.viewStyle}>
         <Card>
             <Text styles={styles.titleStyles}>Add Post</Text>
             <Card.Divider />
@@ -44,6 +44,7 @@ const AddPost = ({ visible, setVisible }) => {
             <Card.Divider />
             <View style={styles.buttonContainer}>
               <Button styles={styles.button} title="Add Post" onPress={handleAddPost} />
+              <Text> </Text>
               <Button styles={styles.button} title="Cancel" onPress={() => setVisible(false)} />
             </View>
         </Card>
@@ -54,9 +55,12 @@ const AddPost = ({ visible, setVisible }) => {
 };
 
 const styles = StyleSheet.create({
+  viewStyle: {
+    flex: 1,
+    paddingTop:50
+  },
     container:{
      justifyContent:'center',
-     alignItems:'center'
     }
     ,
    buttonContainer:{

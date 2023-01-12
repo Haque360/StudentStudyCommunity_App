@@ -12,7 +12,7 @@ const HomeScreen = (props) => {
       {(auth) => (
         <View>
             <View style={styles.logOutStyle}>
-             
+              <Text> </Text>
               <Button
                 style={styles.button}
                 type="outline"
@@ -21,11 +21,13 @@ const HomeScreen = (props) => {
                   auth.setIsLoggedIn(false);
                 }}
               />
+              <Text> </Text>
               <Button 
               style={styles.button} 
               title="Profile"
               onPress={() =>props.navigation.navigate("Profile")}
               />
+              <Text> </Text>
               <Button 
               style={styles.button} 
               title="Add Post"

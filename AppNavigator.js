@@ -40,6 +40,7 @@ const AuthStackScreen = () => {
     <AuthStack.Navigator initialRouteName="SignUp">
       <AuthStack.Screen name="SignIn" component={SignInScreen} />
       <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+
     </AuthStack.Navigator>
   );
 };
