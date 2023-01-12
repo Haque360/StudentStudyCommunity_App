@@ -11,40 +11,40 @@ const HomeScreen = (props) => {
     <AuthContext.Consumer>
       {(auth) => (
         <View>
-            <View style={styles.logOutStyle}>
-              <Text> </Text>
-              <Button
-                style={styles.button}
-                type="outline"
-                title="Log Out"
-                onPress={() => {
-                  auth.setIsLoggedIn(false);
-                }}
-              />
-              <Text> </Text>
-              <Button 
-              style={styles.button} 
+          <View style={styles.logOutStyle}>
+            <Text> </Text>
+            <Button
+              style={styles.button}
+              type="outline"
+              title="Log Out"
+              onPress={() => {
+                auth.setIsLoggedIn(false);
+              }}
+            />
+            <Text> </Text>
+            <Button
+              style={styles.button}
               title="Profile"
-              onPress={() =>props.navigation.navigate("Profile")}
-              />
-              <Text> </Text>
-              <Button 
-              style={styles.button} 
+              onPress={() => props.navigation.navigate("Profile")}
+            />
+            <Text> </Text>
+            <Button
+              style={styles.button}
               title="Add Post"
               onPress={() => setModalVisible(true)}
-              />
-              <AddPost
+            />
+            <AddPost
               visible={modalVisible}
               setVisible={setModalVisible}
-              />
-            </View>
-            <View>
-               <ForumList/>
-            </View>
+            />
+          </View>
+          <View>
+            <ForumList />
+          </View>
         </View>
       )}
     </AuthContext.Consumer>
-    
+
   );
 };
 
@@ -53,15 +53,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "blue",
   },
-  logOutStyle:{
-    width:'20%',
+  logOutStyle: {
+    width: '20%',
     flexDirection: 'row',
   },
   button: {
     marginLeft: 20,
     padding: 30,
   }
-  
+
 });
 
 export default HomeScreen;

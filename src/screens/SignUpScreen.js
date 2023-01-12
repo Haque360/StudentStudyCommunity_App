@@ -34,7 +34,7 @@ const SignUpScreen = (props) => {
 
   return (
     <View style={styles.viewStyle}>
-      <Card containerStyle={{ backgroundColor:'white', }}>
+      <Card containerStyle={{ backgroundColor: 'white', }}>
         <Card.Title>Welcome To The Community</Card.Title>
         <Card.Divider />
         <Input

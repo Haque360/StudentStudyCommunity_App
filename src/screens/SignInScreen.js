@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#0081C9",
-    
+
   },
-  cardStyle:{
-    borderRadius:'40%',
+  cardStyle: {
+    borderRadius: '40%',
   }
 });
 

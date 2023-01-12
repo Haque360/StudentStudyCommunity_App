@@ -44,7 +44,7 @@ const AuthStackScreen = () => {
   );
 };
 
-const AppNavigator=()=> {
+const AppNavigator = () => {
   return (
     <AuthProvider>
       <AuthContext.Consumer>
