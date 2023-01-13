@@ -23,6 +23,7 @@ const ForumPage = ({ visible, setVisible, postDocId, postTitle, postContent, pos
         <Modal animationType="slide" visible={visible}>
             <View style={styles.viewStyle}>
                 <View style={styles.buttonContainer}>
+                    <Text>  </Text>
                     <Button style={styles.button} title="Close" onPress={() => setVisible(false)} />
                 </View>
                 <Card>
@@ -33,7 +34,7 @@ const ForumPage = ({ visible, setVisible, postDocId, postTitle, postContent, pos
 
                 </Card>
                 <Comments
-                 DocID={postDocId}
+                    DocID={postDocId}
                 />
             </View>
         </Modal>
@@ -41,13 +42,17 @@ const ForumPage = ({ visible, setVisible, postDocId, postTitle, postContent, pos
 };
 
 const styles = StyleSheet.create({
+    viewStyle: {
+        flex: 1,
+        backgroundColor: "#0081C9",
+    },
     textStyle: {
         fontSize: 20,
         borderColor: "#d4d4d4",
     },
     textStyle2: {
         fontSize: 12,
-        color:"gray",
+        color: "gray",
         borderColor: "#d4d4d4",
     },
     textStyle3: {
@@ -71,7 +76,11 @@ const styles = StyleSheet.create({
         borderColor: "#d4d4d4",
     },
     buttonContainer: {
-        width: '10%'
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: "skyblue",
+        height: '6%',
     }
 
 });

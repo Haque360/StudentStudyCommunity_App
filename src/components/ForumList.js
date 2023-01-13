@@ -7,7 +7,7 @@ import * as firebase from "firebase/app";
 import ForumPage from './ForumPage';
 
 
-const ForumList = () => {
+const ForumList = ({ reRender }) => {
   const [post, setPosts] = useState([])
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPostID, setSelectedPostID] = useState({});
@@ -33,7 +33,7 @@ const ForumList = () => {
 
     }
     loadData()
-  }, [setPosts]);
+  }, [reRender]);
 
   const handlePress = (item) => {
     //console.log('Pressed', item.postID);
@@ -47,25 +47,32 @@ const ForumList = () => {
 
   return (
     <View>
-      <FlatList
-        data={post}
-        renderItem={
-          ({ item }) =>
-            <TouchableOpacity onPress={() => handlePress(item)}>
-              <Card>
-                <Text style={styles.textStyle}>{item.title}</Text>
-                <ForumPage
-                  visible={modalVisible}
-                  setVisible={setModalVisible}
-                  postDocId={selectedPostID}
-                  postTitle={selectedPostTitle}
-                  postContent={selectedPostContent}
-                  postSetter={selectedPostSetter}
-                />
-              </Card>
-            </TouchableOpacity>
-        }
-      />
+      <View>
+        <FlatList
+          data={post}
+          renderItem={
+            ({ item }) =>
+              <TouchableOpacity onPress={() => handlePress(item)}>
+                <Card>
+                  <Text style={styles.textStyle}>{item.title}</Text>
+                  <Text> </Text>
+                  <ForumPage
+                    visible={modalVisible}
+                    setVisible={setModalVisible}
+                    postDocId={selectedPostID}
+                    postTitle={selectedPostTitle}
+                    postContent={selectedPostContent}
+                    postSetter={selectedPostSetter}
+                  />
+
+                </Card>
+              </TouchableOpacity>
+          }
+        />
+      </View>
+      <View>
+
+      </View>
     </View>
   )
 }
@@ -73,6 +80,6 @@ export default ForumList;
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 20,
+    fontSize: 30,
   }
 });

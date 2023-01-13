@@ -11,7 +11,7 @@ const database = getDatabase();
 
 
 
-const AddPost = ({ visible, setVisible }) => {
+const AddPost = ({ visible, setVisible, callBack }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [postId, setPostId] = React.useState('');;
@@ -40,6 +40,7 @@ const AddPost = ({ visible, setVisible }) => {
     return setPostId(randomString);
   }
 
+
   const handleAddPost = () => {
     // const userId = firebase.auth().currentUser.uid;
     // firebase.database().ref(`posts/${userId}`).push({
@@ -58,11 +59,12 @@ const AddPost = ({ visible, setVisible }) => {
 
     }).then(() => {
       alert("Post Created")
+      callBack && callBack();
     }).catch((error) => {
       alert(error.message);
     })
 
-    //alert(postId)
+    //alert(postId
 
     setVisible(false);
   };
@@ -71,7 +73,7 @@ const AddPost = ({ visible, setVisible }) => {
     <Modal animationType="slide" visible={visible}>
       <View style={styles.viewStyle}>
         <Card>
-          <Text styles={styles.titleStyles}>Add Post</Text>
+          <Text style={styles.titleStyles}>Add Post</Text>
           <Card.Divider />
           <Text>Title</Text>
           <TextInput
@@ -94,7 +96,7 @@ const AddPost = ({ visible, setVisible }) => {
           <View style={styles.buttonContainer}>
             <Button styles={styles.button} title="Add Post" onPress={handleAddPost} />
             <Text> </Text>
-            <Button styles={styles.button} title="Cancel" onPress={() => setVisible(false)} />
+            <Button styles={styles.button} title="Cancel" onPress={() => setVisible(false)}  />
           </View>
         </Card>
       </View>
@@ -105,6 +107,7 @@ const AddPost = ({ visible, setVisible }) => {
 const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
+    backgroundColor: "#0081C9",
   },
   container: {
     justifyContent: 'center',
