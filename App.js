@@ -4,7 +4,7 @@ import AppNavigator from './AppNavigator'
 
 const App = () => {
   return (
-    <AppNavigator/>
+    <AppNavigator />
   )
 }
 

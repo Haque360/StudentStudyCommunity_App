@@ -4,17 +4,16 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useNavigation } from '@react-navigation/native';
 import ForumList from "../components/ForumList";
 import AddPost from "../components/AddPost";
+import { Card } from "@rneui/base";
 
 const HomeScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  // const [reRender, setReRender] = useState(false);
-  const [isUpdated, setIsUpdated] = useState(false);
+  const [reRender, setReRender] = useState(false);
 
-  useEffect(() => {
-      if (isUpdated) {
-          setIsUpdated(false);
-      }
-  }, [isUpdated]);
+  const handleCallback = () => {
+    setReRender(!reRender);
+  }
+
 
   // const handleOnPress = () => {
   //   setModalVisible(true);
@@ -25,7 +24,9 @@ const HomeScreen = (props) => {
   return (
     <AuthContext.Consumer>
       {(auth) => (
-        <View>
+
+        <View style={styles.viewStyle}>
+
           <View style={styles.logOutStyle}>
             <Text> </Text>
             <Button
@@ -36,7 +37,8 @@ const HomeScreen = (props) => {
                 auth.setIsLoggedIn(false);
               }}
             />
-            <Text> </Text>
+            <Text>                                                                                                             </Text>
+
             <Button
               style={styles.button}
               title="Profile"
@@ -48,16 +50,19 @@ const HomeScreen = (props) => {
               title="Add Post"
               onPress={() => {
                 setModalVisible(true);
-                setIsUpdated(true);
               }}
             />
+
             <AddPost
               visible={modalVisible}
               setVisible={setModalVisible}
+              callback={handleCallback}
             />
           </View>
+
+
           <View>
-            <ForumList />
+            <ForumList reRender={reRender} />
           </View>
         </View>
       )}
@@ -67,17 +72,26 @@ const HomeScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
+  viewStyle: {
+    backgroundColor: "#0081C9",
+  },
   textStyle: {
     fontSize: 30,
     color: "blue",
   },
   logOutStyle: {
-    width: '20%',
     flexDirection: 'row',
+    alignItems: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: "skyblue",
+    height: '7%',
   },
   button: {
     marginLeft: 20,
     padding: 30,
+  },
+  buttonSetup: {
+    flexDirection: 'column'
   }
 
 });

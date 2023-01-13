@@ -17,6 +17,7 @@ const Profile = (props) => {
   const [email, setEmail] = useState()
   const [bio, setBio] = useState()
 
+
   useEffect(() => {
     const auth = getAuth();
     setName(auth.currentUser.displayName)
@@ -55,9 +56,9 @@ const Profile = (props) => {
   }
 
   return (
-    <AuthContext.Consumer>
+    <AuthContext.Consumer >
       {(auth) => (
-        <View>
+        <View style={styles.viewStyle}>
           {/* <Text>Name: {user.name}</Text>
                 <Text>Email: {user.email}</Text> */}
 
@@ -71,7 +72,7 @@ const Profile = (props) => {
                 auth.setIsLoggedIn(false);
               }}
             />
-            <Text> </Text>
+            <Text>                                                                                                                                           </Text>
             <Button
               style={styles.button}
               title="Home"
@@ -107,6 +108,11 @@ const Profile = (props) => {
 }
 
 const styles = StyleSheet.create({
+  viewStyle: {
+    backgroundColor: "#0081C9",
+    height: '100%'
+  },
+
   textStyle: {
     fontSize: 20,
   },
@@ -116,8 +122,11 @@ const styles = StyleSheet.create({
     borderColor: "#d4d4d4",
   },
   logOutStyle: {
-    width: '20%',
     flexDirection: 'row',
+    alignItems: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: "skyblue",
+    height: '7%'
   },
   button: {
     marginLeft: 20,
