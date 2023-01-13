@@ -17,6 +17,6 @@ Run the following in command line:
  5. Authentication
  6. Editing profile information (currently only user name)
  
- This app was made using React Native and for database Firebase
+ This app was made using React Native and for database Firebase was used
  
  
