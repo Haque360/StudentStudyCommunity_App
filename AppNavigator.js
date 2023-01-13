@@ -29,8 +29,8 @@ const AuthStack = createStackNavigator();
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator initialRouteName="Home">
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Profile" component={Profile} />
+      <HomeStack.Screen options={{headerShown:false}} name="Home" component={HomeScreen} />
+      <HomeStack.Screen options={{headerShown:false}} name="Profile" component={Profile} />
     </HomeStack.Navigator>
   );
 };
@@ -38,8 +38,8 @@ const HomeStackScreen = () => {
 const AuthStackScreen = () => {
   return (
     <AuthStack.Navigator initialRouteName="SignUp">
-      <AuthStack.Screen name="SignIn" component={SignInScreen} />
-      <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+      <AuthStack.Screen options={{headerShown:false}} name="SignIn" component={SignInScreen} />
+      <AuthStack.Screen options={{headerShown:false}} name="SignUp" component={SignUpScreen} />
     </AuthStack.Navigator>
   );
 };

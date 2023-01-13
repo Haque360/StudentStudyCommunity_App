@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth'
 import { db } from '../../firebase';
 import { addDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { Button, Card } from '@rneui/base';
+import { TouchableOpacity } from 'react-native';
 
 const Comments = ({ DocID }) => {
     const [comment, setComment] = useState('')
@@ -60,10 +61,10 @@ const Comments = ({ DocID }) => {
                 />
 
                 <View style={styles.button}>
-                    <Button
+                    <TouchableOpacity><Button
                         title="Add"
                         onPress={handleComment}
-                    />
+                    /></TouchableOpacity>
                 </View>
                 <View>
                     <FlatList

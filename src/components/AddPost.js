@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 import { collection, doc, setDoc, addDoc } from "firebase/firestore";
 import { getDatabase, ref, set } from "firebase/database";
 import { db } from '../../firebase';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const database = getDatabase();
 
@@ -94,7 +95,7 @@ const AddPost = ({ visible, setVisible, callBack }) => {
           />
           <Card.Divider />
           <View style={styles.buttonContainer}>
-            <Button styles={styles.button} title="Add Post" onPress={handleAddPost} />
+            <TouchableOpacity><Button styles={styles.button} title="Add Post" onPress={handleAddPost} /></TouchableOpacity>
             <Text> </Text>
             <Button styles={styles.button} title="Cancel" onPress={() => setVisible(false)}  />
           </View>

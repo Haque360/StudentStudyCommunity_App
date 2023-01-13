@@ -57,8 +57,12 @@ const Profile = (props) => {
 
   return (
     <AuthContext.Consumer >
+
       {(auth) => (
         <View style={styles.viewStyle}>
+          <View style={styles.logoHeaderStyle}>
+            <Text style={styles.logoStyle2}>Student Study Community App</Text>
+          </View>
           {/* <Text>Name: {user.name}</Text>
                 <Text>Email: {user.email}</Text> */}
 
@@ -126,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     alignItems: 'center',
     backgroundColor: "skyblue",
-    height: '7%'
+    height: '5%'
   },
   button: {
     marginLeft: 20,
@@ -143,6 +147,15 @@ const styles = StyleSheet.create({
   imgContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logoHeaderStyle:{
+    alignItems: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: "skyblue",
+  },
+  logoStyle2:{
+    fontSize:30,
+    paddingTop:20
   }
 
 });

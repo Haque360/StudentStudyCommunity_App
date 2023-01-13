@@ -1,6 +1,6 @@
 import { Input, Button, Card } from "@rneui/themed";
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet,Text } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 
@@ -35,6 +35,9 @@ const SignUpScreen = (props) => {
 
   return (
     <View style={styles.viewStyle}>
+      <View style={styles.logoHeaderStyle}>
+            <Text style={styles.logoStyle2}>Student Study Community App</Text>
+          </View>
       <Card containerStyle={{ backgroundColor: 'white', }}>
         <Card.Title>Welcome To The Community</Card.Title>
         <Card.Divider />
@@ -92,6 +95,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#0081C9",
   },
+  logoHeaderStyle:{
+    alignItems: 'flex-end',
+    alignItems: 'center',
+  },
+  logoStyle2:{
+    fontSize:30,
+  }
 });
 
 export default SignUpScreen;
