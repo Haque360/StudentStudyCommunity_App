@@ -15,6 +15,9 @@ const ForumList = ({ reRender }) => {
   const [selectedPostTitle, setSelectedPostTitle] = useState({})
   const [selectedPostSetter, setSelectedPostSetter] = useState({})
 
+
+ 
+
   useEffect(() => {
     const li = []
     const loadData = async () => {
@@ -47,7 +50,10 @@ const ForumList = ({ reRender }) => {
 
   return (
     <View>
+      
+    
       <View>
+      
         <FlatList
           data={post}
           renderItem={
@@ -67,12 +73,14 @@ const ForumList = ({ reRender }) => {
 
                 </Card>
               </TouchableOpacity>
+              
           }
         />
       </View>
       <View>
 
       </View>
+     
     </View>
   )
 }
@@ -80,6 +88,6 @@ export default ForumList;
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 30,
+    fontSize: 20,
   }
 });

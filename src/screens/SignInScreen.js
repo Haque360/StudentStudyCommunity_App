@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet,Text } from "react-native";
 import { Input, Button, Card } from "@rneui/themed";
 import { AuthContext } from "../providers/AuthProvider";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -28,6 +28,9 @@ const SignInScreen = (props) => {
     <AuthContext.Consumer>
       {(auth) => (
         <View style={styles.viewStyle}>
+          <View style={styles.logoHeaderStyle}>
+            <Text style={styles.logoStyle2}>Student Study Community App</Text>
+          </View>
           <Card style={styles.cardStyle}>
             <Card.Title>Welcome Back!!</Card.Title>
             <Card.Divider />
@@ -78,6 +81,13 @@ const styles = StyleSheet.create({
   },
   cardStyle: {
     borderRadius: '40%',
+  },
+  logoHeaderStyle:{
+    alignItems: 'flex-end',
+    alignItems: 'center'
+  },
+  logoStyle2:{
+    fontSize:30,
   }
 });
 
