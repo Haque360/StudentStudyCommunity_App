@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Button, StyleSheet } from 'react-native';
+import { View, Text,Button, StyleSheet } from 'react-native';
 import { Input, Card } from "@rneui/themed";
-import { AuthContext } from "../providers/AuthProvider";
-import * as firebase from "firebase/app";
+import LogOut from '../components/LogOut';
 import { TextInput } from 'react-native-gesture-handler';
-import { update } from 'firebase/database';
 import { getAuth, updateProfile, updateEmail } from "firebase/auth";
 import { CardDivider } from '@rneui/base/dist/Card/Card.Divider';
-
-const auth = getAuth();
-
 
 const Profile = (props) => {
   const [user, setUser] = useState({});
   const [name, setName] = useState()
   const [email, setEmail] = useState()
-  const [bio, setBio] = useState()
+  // const [bio, setBio] = useState()
 
 
   useEffect(() => {
@@ -27,7 +22,7 @@ const Profile = (props) => {
     // });
   }, [email]);
 
-  const _saveDetails = (name, email, bio) => {
+  const _saveDetails = (name, email) => {
     //alert(email)
     const auth = getAuth();
     // alert(auth.currentUser.email)
@@ -56,9 +51,6 @@ const Profile = (props) => {
   }
 
   return (
-    <AuthContext.Consumer >
-
-      {(auth) => (
         <View style={styles.viewStyle}>
           <View style={styles.logoHeaderStyle}>
             <Text style={styles.logoStyle2}>Student Study Community App</Text>
@@ -68,14 +60,7 @@ const Profile = (props) => {
 
           <View style={styles.logOutStyle}>
             <Text> </Text>
-            <Button
-              style={styles.button}
-              type="outline"
-              title="Log Out"
-              onPress={() => {
-                auth.setIsLoggedIn(false);
-              }}
-            />
+            <LogOut/>
             <Text>                                                                                                                                           </Text>
             <Button
               style={styles.button}
@@ -90,24 +75,22 @@ const Profile = (props) => {
             <Text style={styles.textStyle}>Email:</Text>
             <TextInput value={email} onChangeText={setEmail} style={styles.textStyle2} />
 
-            <Text style={styles.textStyle}>Bio</Text>
-            <TextInput
+            {/* <Text style={styles.textStyle}>Bio</Text> */}
+            {/* <TextInput
               onChangeText={setBio}
               style={styles.textStyle2}
               multiline={true}
               numberOfLines={4}
               // onChangeText={(text) => this.setState({text})}
               value={bio}
-            />
+            /> */}
             <CardDivider />
             <View>
-              <Button title='Edit' onPress={() => _saveDetails(name, email, bio)} />
+              <Button title='Edit' onPress={() => _saveDetails(name, email)} />
             </View>
           </Card>
 
         </View>
-      )}
-    </AuthContext.Consumer>
   );
 }
 
@@ -116,7 +99,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#0081C9",
     height: '100%'
   },
-
   textStyle: {
     fontSize: 20,
   },
@@ -131,22 +113,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: "skyblue",
     height: '5%'
-  },
-  button: {
-    marginLeft: 20,
-    padding: 30,
-    width: '20%',
-  },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 200 / 2,
-    borderWidth: 1,
-    borderColor: "#d4d4d4",
-  },
-  imgContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   logoHeaderStyle:{
     alignItems: 'flex-end',

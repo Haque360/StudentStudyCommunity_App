@@ -1,94 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { View, Button, StyleSheet, Text, TouchableOpacity, RefreshControl, ScrollView } from "react-native";
-import { AuthContext } from "../providers/AuthProvider";
-import { useNavigation } from '@react-navigation/native';
+import { View, Button, StyleSheet, Text, TouchableOpacity } from "react-native";
 import ForumList from "../components/ForumList";
 import AddPost from "../components/AddPost";
-import { Card } from "@rneui/base";
-import { Touchable } from "react-native";
+import LogOut from "../components/LogOut";
 
 const HomeScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [reRender, setReRender] = useState(false);
-  const [refreshing, setRefreshing] = React.useState(false);
-
-  const handleCallback = () => {
-    setReRender(!reRender);
-  }
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 2000);
-  }, []);
-
-  // const handleOnPress = () => {
-  //   setModalVisible(true);
-  //   setIsUpdated(true);
-  // }
-
 
   return (
-    <AuthContext.Consumer>
-      {(auth) => (
 
-        <View style={styles.viewStyle}>
-          <View style={styles.logoHeaderStyle}>
-            <Text style={styles.logoStyle2}>Student Study Community App</Text>
-          </View>
+    <View style={styles.viewStyle}>
 
-          <View style={styles.logOutStyle}>
+      <View style={styles.logoHeaderStyle}>
+        <Text style={styles.logoStyle2}>Student Study Community App</Text>
+      </View>
 
-            <Text> </Text>
-            <Button
-              style={styles.button}
-              type="outline"
-              title="Log Out"
-              onPress={() => {
-                auth.setIsLoggedIn(false);
-              }}
-            />
-            <Text>                                                                                                             </Text>
+      <View style={styles.logOutStyle}>
 
-            <Button
-              style={styles.button}
-              title="Profile"
-              onPress={() => props.navigation.navigate("Profile")}
-            />
-            <Text> </Text>
-            <TouchableOpacity>
-              <Button
-                style={styles.button}
-                title="Add Post"
-                onPress={() => {
-                  setModalVisible(true);
-                }}
-              /></TouchableOpacity>
+        <Text> </Text>
+        <LogOut />
+        <Text>                                                                                                             </Text>
 
-            <AddPost
-              visible={modalVisible}
-              setVisible={setModalVisible}
-              callback={handleCallback}
-            />
-          </View>
+        <Button
+          style={styles.button}
+          title="Profile"
+          onPress={() => props.navigation.navigate("Profile")}
+        />
+        <Text> </Text>
+        <TouchableOpacity>
+          <Button
+            style={styles.button}
+            title="Add Post"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          /></TouchableOpacity>
 
-          <View>
-            
-           
-            <ForumList reRender={reRender} /> 
-           
-          </View>
-        </View> 
-      )}
-    </AuthContext.Consumer>
+        <AddPost
+          visible={modalVisible}
+          setVisible={setModalVisible}
+        />
+      </View>
+
+      <View>
+
+
+        <ForumList />
+
+      </View>
+    </View>
 
   );
 };
 
 const styles = StyleSheet.create({
 
+  forumViewStyle:{
+    flex:1,
+  },
+
   viewStyle: {
     backgroundColor: "#0081C9",
+    flex:1
   },
   textStyle: {
     fontSize: 30,
@@ -100,10 +73,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: "skyblue",
     height: '5%',
-  },
-  button: {
-    marginLeft: 20,
-    padding: 30,
   },
   buttonSetup: {
     flexDirection: 'column'

@@ -12,7 +12,7 @@ const database = getDatabase();
 
 
 
-const AddPost = ({ visible, setVisible, callBack }) => {
+const AddPost = ({ visible, setVisible }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [postId, setPostId] = React.useState('');;
@@ -28,18 +28,15 @@ const AddPost = ({ visible, setVisible, callBack }) => {
 
   const auth = getAuth()
 
-  const generateRandomString = (lenth) => {
-    const char = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    const random = Array.from(
-      { length: lenth },
-      () => char[Math.floor(Math.random() * char.length)]
-    );
-    const randomString = random.join("");
-    if (randomString == '') {
-      generateRandomString()
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-    return setPostId(randomString);
-  }
+    return setPostId(result);
+}
 
 
   const handleAddPost = () => {
@@ -48,7 +45,8 @@ const AddPost = ({ visible, setVisible, callBack }) => {
     //   title,
     //   content
     // });
-    generateRandomString(10)
+    // generateRandomString(10)
+    makeid(10)
     setTitle('');
     setContent('');
 
@@ -60,7 +58,6 @@ const AddPost = ({ visible, setVisible, callBack }) => {
 
     }).then(() => {
       alert("Post Created")
-      callBack && callBack();
     }).catch((error) => {
       alert(error.message);
     })

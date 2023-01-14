@@ -7,7 +7,7 @@ import * as firebase from "firebase/app";
 import ForumPage from './ForumPage';
 
 
-const ForumList = ({ reRender }) => {
+const ForumList = ({ }) => {
   const [post, setPosts] = useState([])
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPostID, setSelectedPostID] = useState({});
@@ -36,7 +36,7 @@ const ForumList = ({ reRender }) => {
 
     }
     loadData()
-  }, [reRender]);
+  }, [post]);
 
   const handlePress = (item) => {
     //console.log('Pressed', item.postID);
@@ -55,6 +55,7 @@ const ForumList = ({ reRender }) => {
       <View>
       
         <FlatList
+        showsVerticalScrollIndicator
           data={post}
           renderItem={
             ({ item }) =>
