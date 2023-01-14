@@ -30,7 +30,7 @@ const Comments = ({ DocID }) => {
 
         }
         loadData()
-    }, [setAllComments]);
+    }, [allComments]);
 
     useEffect(() => {
         const auth = getAuth();

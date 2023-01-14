@@ -10,6 +10,7 @@ import * as firebase from "firebase/app";
 
 import { AuthProvider, AuthContext } from "./src/providers/AuthProvider";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyC53Je42jPPPYTAPgRxB0oXiPaXj0ZqcEI",
   authDomain: "studentstudycommunityapp-6b8cc.firebaseapp.com",
